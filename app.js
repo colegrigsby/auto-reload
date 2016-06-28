@@ -1,5 +1,7 @@
 
 var pmx = require('pmx');
+var pm2     = require('pm2');
+var Promise = require('bluebird'); 
 
 /******************************
  *    ______ _______ ______
@@ -108,9 +110,43 @@ pmx.initModule({
     }
   });
 
+  var chain = Promise.resolve();
+  var running = false; 
   setInterval(function() {
+    if (running == true) return false; 
+
+    running = true; //nec with chainging?? 
     // Then we can see that this value increase over the time in Keymetrics
     //PROMISE CHAIN???? for pull and restart or something based on give proc names 
+    chain = chain.then(function() { 
+        pm2.pullAndReload("asahi"), function(err, meta) {
+          if (meta) {
+            var rev = meta.rev;
+
+            app_updated.inc();
+
+            if (rev)
+              console.log('Successfully pulled [App name: %s] [Commit id: %s] [Repo: %s] [Branch: %s]',
+                          proc.name,
+                          rev.current_revision,
+                          meta.procs[0].pm2_env.versioning.repo_path,
+                          meta.procs[0].pm2_env.versioning.branch);
+            else {
+              // Backward compatibility
+              console.log('App %s succesfully pulled');
+            }
+          }
+          if (err)
+            debug('App %s already at latest version', proc.name);
+          return;
+        });
+      }
+      else
+         return; ;
+    }, function(){running = false;});
+
+    });
+
     value_to_inspect++;
   }, 3000);
 
