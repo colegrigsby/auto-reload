@@ -112,6 +112,7 @@ pmx.initModule({
 
   var chain = Promise.resolve();
   var running = false; 
+  
   setInterval(function() {
     if (running == true) return false; 
 
@@ -119,36 +120,29 @@ pmx.initModule({
     // Then we can see that this value increase over the time in Keymetrics
     //PROMISE CHAIN???? for pull and restart or something based on give proc names 
     chain = chain.then(function() { 
-        pm2.pullAndReload("asahi"), function(err, meta) {
+        pm2.pullAndReload("asahi", function(err, meta) {
           if (meta) {
             var rev = meta.rev;
 
-            app_updated.inc();
+            //app_updated.inc();
 
             if (rev)
-              console.log('Successfully pulled [App name: %s] [Commit id: %s] [Repo: %s] [Branch: %s]',
-                          proc.name,
-                          rev.current_revision,
-                          meta.procs[0].pm2_env.versioning.repo_path,
-                          meta.procs[0].pm2_env.versioning.branch);
+              console.log('Successfully pulled ');
             else {
               // Backward compatibility
-              console.log('App %s succesfully pulled');
+              console.log('App %s successfully pulled', 'asahi');
             }
           }
           if (err)
-            debug('App %s already at latest version', proc.name);
+            debug('App %s already at latest version', 'asahi');
           return;
-        });
-      }
-      else
-         return; ;
-    }, function(){running = false;});
 
-    });
+      }
+    )} , function(){running = false;});
+
 
     value_to_inspect++;
-  }, 3000);
+}, 3000);
 
   console.log(value_to_inspect);
 
