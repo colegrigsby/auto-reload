@@ -36,7 +36,7 @@ var child = require('child_process');
  * More options: http://bit.ly/1EpagZS
  *
  */
-pmx.initModule({
+var conf = pmx.initModule({
 
     // Options related to the display style on Keymetrics
     widget: {
@@ -112,7 +112,7 @@ pmx.initModule({
     });
 
 
-    console.log(value_to_inspect);
+    //console.log(value_to_inspect);
 
     /**
      *                Simple Actions
@@ -177,7 +177,7 @@ pmx.initModule({
                     console.log("meta", meta);
                     console.log("err", err);
                     //TODO exec start or restart?
-                    console.log(process) //this is the current reload process
+                    //console.log(process) //this is the current reload process
                     //child.exec("Echo hello ", process);
 
                     pm2.sendSignalToProcessName("reload", "asahi");
