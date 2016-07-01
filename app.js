@@ -3,6 +3,8 @@ var pmx = require('pmx');
 var pm2     = require('pm2');
 var Promise = require('bluebird');
 var vizion = require('vizion');
+var child                = require('child_process');
+
 /******************************
  *    ______ _______ ______
  *   |   __ \   |   |__    |
@@ -127,6 +129,8 @@ pmx.initModule({
             console.log("meta", meta);
             console.log("err", err);
             //TODO exec start or restart?
+
+            child.exec("Echo hello ", process);
             running = false;
           }
       );
@@ -188,5 +192,6 @@ pmx.initModule({
   })
 
 */
+
 
 });
