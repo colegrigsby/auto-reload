@@ -121,9 +121,9 @@ pmx.initModule({
     running = true; //nec with chaining?? //probably gonna device between running vs promises?
     // Then we can see that this value increase over the time in Keymetrics
     //PROMISE CHAIN???? for pull and restart or something based on give proc names
-      vizion.isUpToDate(
+      vizion.update(
           {folder : "/opt/dev/source"}, //TODO from conf file
-          function(meta, err){
+          function(err, meta){
             console.log("meta", meta);
             console.log("err", err);
             //TODO exec start or restart?
