@@ -1,8 +1,8 @@
 
 var pmx = require('pmx');
 var pm2     = require('pm2');
-var Promise = require('bluebird'); 
-
+var Promise = require('bluebird');
+var vizion = require('vizion');
 /******************************
  *    ______ _______ ______
  *   |   __ \   |   |__    |
@@ -35,7 +35,7 @@ var Promise = require('bluebird');
  * More options: http://bit.ly/1EpagZS
  *
  */
-var conf = pmx.initModule({
+pmx.initModule({
 
   // Options related to the display style on Keymetrics
   widget : {
@@ -110,7 +110,29 @@ var conf = pmx.initModule({
     }
   });
 
+  setInterval(function() {
 
+    var chain = Promise.resolve();
+    var running = false;
+
+
+    if (running == true) return false;
+
+    running = true; //nec with chaining?? //probably gonna device between running vs promises?
+    // Then we can see that this value increase over the time in Keymetrics
+    //PROMISE CHAIN???? for pull and restart or something based on give proc names
+    chain = chain.then(function() {
+      vizion.update(
+          {folder : "/opt/dev/source"}, //TODO from conf file
+          function(meta, err){
+            console.log(meta);
+            //TODO exec start or restart? 
+          }
+      )} , function(){running = false;});
+
+
+    value_to_inspect++;
+  }, 3000);
 
   console.log(value_to_inspect);
 
@@ -157,50 +179,13 @@ var conf = pmx.initModule({
 
   });
 
-
+/*
   pm2.connect(function(){
     console.log('auto-reload2 module connected to pm2');
-    console.log(conf);
-
-    setInterval(function() {
-
-      var chain = Promise.resolve();
-      var running = false;
 
 
-      if (running == true) return false;
-
-      running = true; //nec with chaining??
-      // Then we can see that this value increase over the time in Keymetrics
-      //PROMISE CHAIN???? for pull and restart or something based on give proc names
-      chain = chain.then(function() {
-        pm2.pullAndReload("asahi", function(err, meta) {
-          console.log("Pulling and reloading asahi")
-          console.log(meta)
-              if (meta) {
-                var rev = meta.rev;
-
-                //app_updated.inc();
-
-                if (rev)
-                  console.log('Successfully pulled ');
-                else {
-                  // Backward compatibility
-                  console.log('App %s successfully pulled', 'asahi');
-                }
-              }
-              if (err)
-                console.log('App %s already at latest version', 'asahi');
-              return;
-
-            }
-        )} , function(){running = false;});
-
-
-      value_to_inspect++;
-    }, 3000);
   })
 
-
+*/
 
 });
