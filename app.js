@@ -180,7 +180,9 @@ var conf = pmx.initModule({
                     //console.log(process) //this is the current reload process
                     //child.exec("Echo hello ", process);
 
-                    pm2.reload("asahi");
+                    //might have to chain?
+                    if (meta.success)
+                        pm2.reload("/opt/dev/source/process.json");
 
 
                     running = false;
