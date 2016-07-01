@@ -35,7 +35,7 @@ var Promise = require('bluebird');
  * More options: http://bit.ly/1EpagZS
  *
  */
-pmx.initModule({
+var conf = pmx.initModule({
 
   // Options related to the display style on Keymetrics
   widget : {
@@ -110,39 +110,7 @@ pmx.initModule({
     }
   });
 
-  var chain = Promise.resolve();
-  var running = false; 
-  
-  setInterval(function() {
-    if (running == true) return false; 
 
-    running = true; //nec with chainging?? 
-    // Then we can see that this value increase over the time in Keymetrics
-    //PROMISE CHAIN???? for pull and restart or something based on give proc names 
-    chain = chain.then(function() { 
-        pm2.pullAndReload("asahi", function(err, meta) {
-          if (meta) {
-            var rev = meta.rev;
-
-            //app_updated.inc();
-
-            if (rev)
-              console.log('Successfully pulled ');
-            else {
-              // Backward compatibility
-              console.log('App %s successfully pulled', 'asahi');
-            }
-          }
-          if (err)
-            debug('App %s already at latest version', 'asahi');
-          return;
-
-      }
-    )} , function(){running = false;});
-
-
-    value_to_inspect++;
-}, 3000);
 
   console.log(value_to_inspect);
 
@@ -188,6 +156,49 @@ pmx.initModule({
     });
 
   });
+
+
+  pm2.connect(function(){
+    console.log('auto-reload2 module connected to pm2');
+    console.log(conf);
+
+    setInterval(function() {
+
+      var chain = Promise.resolve();
+      var running = false;
+
+
+      if (running == true) return false;
+
+      running = true; //nec with chaining??
+      // Then we can see that this value increase over the time in Keymetrics
+      //PROMISE CHAIN???? for pull and restart or something based on give proc names
+      chain = chain.then(function() {
+        pm2.pullAndReload("asahi", function(err, meta) {
+              if (meta) {
+                var rev = meta.rev;
+
+                //app_updated.inc();
+
+                if (rev)
+                  console.log('Successfully pulled ');
+                else {
+                  // Backward compatibility
+                  console.log('App %s successfully pulled', 'asahi');
+                }
+              }
+              if (err)
+                debug('App %s already at latest version', 'asahi');
+              return;
+
+            }
+        )} , function(){running = false;});
+
+
+      value_to_inspect++;
+    }, 3000);
+  })
+
 
 
 });
