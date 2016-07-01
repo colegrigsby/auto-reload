@@ -175,6 +175,8 @@ var conf = pmx.initModule({
       //PROMISE CHAIN???? for pull and restart or something based on give proc names
       chain = chain.then(function() {
         pm2.pullAndReload("asahi", function(err, meta) {
+          console.log("Pulling and reloading asahi")
+          console.log(meta)
               if (meta) {
                 var rev = meta.rev;
 
