@@ -136,7 +136,7 @@ var conf = pmx.initModule({
 
                 //might have to chain? definitely a good idea
                 if (meta.success)
-                    child.exec("cd /opt/dev && mkdir HI")
+                    child.exec("cd /opt/dev/source && pm2 startOrRestart process.json")
                     //pm2.restart("/opt/dev/source/process.json"); //TODO CONFIG THIS,
                 // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc
                 //try restart with name then file next
