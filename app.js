@@ -124,8 +124,8 @@ pmx.initModule({
       vizion.isUpToDate(
           {folder : "/opt/dev/source"}, //TODO from conf file
           function(meta, err){
-            console.log(meta);
-            console.log(err);
+            console.log("meta", meta);
+            console.log("err", err);
             //TODO exec start or restart?
             running = false;
           }
