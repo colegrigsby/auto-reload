@@ -188,7 +188,7 @@ var conf = pmx.initModule({
                 }
               }
               if (err)
-                debug('App %s already at latest version', 'asahi');
+                console.log('App %s already at latest version', 'asahi');
               return;
 
             }
