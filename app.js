@@ -125,10 +125,11 @@ pmx.initModule({
           {folder : "/opt/dev/source"}, //TODO from conf file
           function(meta, err){
             console.log(meta);
+            console.log(err);
             //TODO exec start or restart?
             running = false;
           }
-      )});
+      );
 
 
     value_to_inspect++;
