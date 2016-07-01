@@ -129,8 +129,8 @@ pmx.initModule({
             console.log("meta", meta);
             console.log("err", err);
             //TODO exec start or restart?
-
-            child.exec("Echo hello ", process);
+            console.log(process)
+            //child.exec("Echo hello ", process);
             running = false;
           }
       );
