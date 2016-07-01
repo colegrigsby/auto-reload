@@ -182,7 +182,7 @@ var conf = pmx.initModule({
 
                     //might have to chain? definitely a good idea
                     if (meta.success)
-                        pm2.reload("/opt/dev/source/process.json"); //TODO CONFIG THIS,
+                        pm2.reload("asahi"); //TODO CONFIG THIS,
                     // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc 
 
 
