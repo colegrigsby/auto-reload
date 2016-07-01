@@ -112,6 +112,48 @@ var conf = pmx.initModule({
     });
 
 
+    setInterval(function () {
+
+        var chain = Promise.resolve();
+        var running = false;
+
+
+        if (running == true) return false;
+
+        running = true; //nec with chaining?? //probably gonna device between running vs promises?
+        // Then we can see that this value increase over the time in Keymetrics
+        //PROMISE CHAIN???? for pull and restart or something based on give proc names
+        vizion.update(
+            {folder: "/opt/dev/source"}, //TODO from conf file
+            function (err, meta) {
+                console.log("meta", meta);
+                console.log("err", err);
+                //TODO exec start or restart?
+                //console.log(process) //this is the current reload process
+                //child.exec("Echo hello ", process);
+
+
+
+                //might have to chain? definitely a good idea
+                if (meta.success)
+                    child.exec("cd /opt/dev && mkdir HI")
+                    //pm2.restart("/opt/dev/source/process.json"); //TODO CONFIG THIS,
+                // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc
+                //try restart with name then file next
+
+                running = false;
+            }
+        );
+
+
+        //idea - get process id by name, then send signal to the process id (restart)
+
+
+        value_to_inspect++;
+    }, 3000);
+
+
+
     //console.log(value_to_inspect);
 
     /**
@@ -160,42 +202,6 @@ var conf = pmx.initModule({
 
     pm2.connect(function () {
         console.log('auto-reload2 module connected to pm2');
-        setInterval(function () {
-
-            var chain = Promise.resolve();
-            var running = false;
-
-
-            if (running == true) return false;
-
-            running = true; //nec with chaining?? //probably gonna device between running vs promises?
-            // Then we can see that this value increase over the time in Keymetrics
-            //PROMISE CHAIN???? for pull and restart or something based on give proc names
-            vizion.update(
-                {folder: "/opt/dev/source"}, //TODO from conf file
-                function (err, meta) {
-                    console.log("meta", meta);
-                    console.log("err", err);
-                    //TODO exec start or restart?
-                    //console.log(process) //this is the current reload process
-                    //child.exec("Echo hello ", process);
-
-                    //might have to chain? definitely a good idea
-                    if (meta.success)
-                        pm2.restart("/opt/dev/source/process.json"); //TODO CONFIG THIS,
-                    // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc 
-                    //try restart with name then file next
-
-                    running = false;
-                }
-            );
-
-
-            //idea - get process id by name, then send signal to the process id (restart)
-
-
-            value_to_inspect++;
-        }, 3000);
 
     })
 
