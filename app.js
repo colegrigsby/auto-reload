@@ -123,7 +123,7 @@ var conf = pmx.initModule({
         running = true; //nec with chaining?? //probably gonna device between running vs promises?
         // Then we can see that this value increase over the time in Keymetrics
         //PROMISE CHAIN???? for pull and restart or something based on give proc names
-        /*vizion.update(
+        vizion.update(
             {folder: "/opt/dev/source"}, //TODO from conf file
             function (err, meta) {
                 console.log("meta", meta);
@@ -131,26 +131,26 @@ var conf = pmx.initModule({
                 //TODO exec start or restart?
                 //console.log(process) //this is the current reload process
                 //child.exec("Echo hello ", process);
-                pm2.getProcessIdByName("asahi", function(blank, id){console.log("ID:",id[0])})
+                //pm2.getProcessIdByName("asahi", function(blank, id){console.log("ID:",id[0])})
 
 
                 //might have to chain? definitely a good idea
                 if (meta.success)
-                    child.exec("cd /opt/dev/source && pm2 reload process.json --only asahi")
-                    //pm2.restart("/opt/dev/source/process.json"); //TODO CONFIG THIS,
+                    //child.exec("cd /opt/dev/source && pm2 reload process.json --only asahi")
+                    pm2.restart("/opt/dev/source/process.json"); //TODO CONFIG THIS,
                 // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc
                 //try restart with name then file next
 
                 running = false;
             }
-        );*/
+        );
 
-        pm2.pullAndReload("asahi", function(err, out) {
+       /* pm2.pullAndReload("asahi", function(err, out) {
             console.log(err)
             console.log(out)
             running = false;
         });
-
+*/
 
         //idea - get process id by name, then send signal to the process id (restart)
 
