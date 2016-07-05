@@ -146,6 +146,7 @@ var conf = pmx.initModule({
         );*/
 
         pm2.pullAndReload("asahi", function(err, out) {
+            console.log(err)
             console.log(out)
             running = false;
         });
