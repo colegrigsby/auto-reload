@@ -131,7 +131,7 @@ var conf = pmx.initModule({
                 //TODO exec start or restart?
                 //console.log(process) //this is the current reload process
                 //child.exec("Echo hello ", process);
-                pm2.getProcessIdByName("asahi", function(blank, id){console.log("ID:",id)})
+                pm2.getProcessIdByName("asahi", function(blank, id){console.log("ID:",id[0])})
 
 
                 //might have to chain? definitely a good idea
