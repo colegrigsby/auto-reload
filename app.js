@@ -123,7 +123,7 @@ var conf = pmx.initModule({
         running = true; //nec with chaining?? //probably gonna device between running vs promises?
         // Then we can see that this value increase over the time in Keymetrics
         //PROMISE CHAIN???? for pull and restart or something based on give proc names
-        vizion.update(
+        /*vizion.update(
             {folder: "/opt/dev/source"}, //TODO from conf file
             function (err, meta) {
                 console.log("meta", meta);
@@ -143,7 +143,12 @@ var conf = pmx.initModule({
 
                 running = false;
             }
-        );
+        );*/
+
+        pm2.pullAndReload("asahi", function(err, out) {
+            console.log(out)
+            running = false;
+        });
 
 
         //idea - get process id by name, then send signal to the process id (restart)
