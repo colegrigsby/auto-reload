@@ -1,24 +1,28 @@
 {
-  "name": "auto-reload2",
-  "version": "1.0.0",
-  "description": "PM2 Sample Module",
+  "name": "auto-reload", //TODO Rename before publishing
+  "version": "0.5.0",
+  "description": "PM2 Module to pull and reload a specific process ",
   "main": "app.js",
   "dependencies": {
     "pmx" : "beta"
+    //TODO check these
+    //pm2
+    //vizion
+    //possibly promise
   },
-  "repository": {
+  "repository": { //fix this (hopefully publish does)
     "type": "git",
     "url": "https://github.com/keymetrics/pmx.git"
   },
   "config" : {
-    "conf_var_1" : true,
-    "conf_var_2" : "myvalue"
+    "folder_path" : "/opt/asahi",
+    "proc_name" : "asahi"
   },
-  "apps" : [{
+  "apps" : [{ //TODO maybe this affects thre reload?
     "merge_logs"         : true,
     "max_memory_restart" : "200M",
     "script"             : "app.js"
   }],
-  "author": "Keymetrics Inc.",
+  "author": "Cole Grigsby",
   "license": "MIT"
 }

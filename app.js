@@ -2,7 +2,7 @@ var pmx = require('pmx');
 var pm2 = require('pm2');
 var Promise = require('bluebird');
 var vizion = require('vizion');
-var child = require('child_process');
+//var child = require('child_process');
 
 /******************************
  *    ______ _______ ______
@@ -36,13 +36,15 @@ var child = require('child_process');
  * More options: http://bit.ly/1EpagZS
  *
  */
-var conf = pmx.initModule({
+pmx.initModule({
 
     // Options related to the display style on Keymetrics
     widget: {
 
+        //TODO logo and stuff would be cool :)
         // Logo displayed
         logo: 'https://app.keymetrics.io/img/logo/keymetrics-300.png',
+        //include img in package and use that?
 
         // Module colors
         // 0 = main element
@@ -54,7 +56,7 @@ var conf = pmx.initModule({
         // Section to show / hide
         el: {
             probes: true,
-            actions: true
+            actions: true //probably hide this
         },
 
         // Main block to show / hide
@@ -64,7 +66,7 @@ var conf = pmx.initModule({
             meta: true,
 
             // Custom metrics to put in BIG
-            main_probes: ['test-probe']
+            main_probes: ['App Updated Count']
         }
 
     }
@@ -80,26 +82,26 @@ var conf = pmx.initModule({
      *                      Custom Metrics
      *
      * Let's expose some metrics that will be displayed into Keymetrics
-     *   For more documentation about metrics: http://bit.ly/1PZrMFB
+     *   For more documentation about metrics: http://bit.ly/1PZrMFB TODO
      */
     var Probe = pmx.probe();
 
-    var value_to_inspect = 0;
+    var updated = 0;
 
     /**
-     * .metric, .counter, .meter, .histogram are also available (cf doc)
+     * .metric, .counter, .meter, .histogram are also available (cf doc) //TODO research these 
      */
     var val = Probe.metric({
-        name: 'test-probe',
+        name: 'App Updated Count',
         value: function () {
-            return value_to_inspect;
+            return updated;
         },
         /**
          * Here we set a default value threshold, to receive a notification
          * These options can be overriden via Keymetrics or via pm2
          * More: http://bit.ly/1O02aap
          */
-        alert: {
+        /*alert: {
             mode: 'threshold',
             value: 20,
             msg: 'test-probe alert!',
@@ -108,43 +110,40 @@ var conf = pmx.initModule({
                 // You can also configure your own logic to do something
                 console.log('Value has reached %d', val);
             }
-        }
+        }*/
     });
 
 
     setInterval(function () {
 
+
+        //TODO decide between chain and running boolean. Running is how pm2-auto-pull is done but chaining might
+        // be better coding
         var chain = Promise.resolve();
         var running = false;
 
 
         if (running == true) return false;
 
-        running = true; //nec with chaining?? //probably gonna device between running vs promises?
-        // Then we can see that this value increase over the time in Keymetrics
-        //PROMISE CHAIN???? for pull and restart or something based on give proc names
+        running = true;
+
         vizion.update(
-            {folder: "/opt/dev/source"}, //TODO from conf file
+            { folder: conf.folder_path }, //TODO TEST with /opt/asahi :(
             function (err, meta) {
                 console.log("meta", meta);
                 console.log("err", err);
-                //TODO exec start or restart?
-                //console.log(process) //this is the current reload process
-                //child.exec("Echo hello ", process);
-                //pm2.getProcessIdByName("asahi", function(blank, id){console.log("ID:",id[0])})
 
-
-                //might have to chain? definitely a good idea
-                if (meta.success)
+                if (meta.success) {
                     //child.exec("cd /opt/dev/source && pm2 reload process.json --only asahi")
-                    pm2.reload("asahi"); //TODO CONFIG THIS,
-                // this gets the right name but wrong proc -OOH IDEA! write out the whole app.js in proc
-                //try restart with name then file next
+                    pm2.reload(conf.proc_name); //config in package.json rn but might wanna change it? base off folder?
+                    updated++;
 
+                }
                 running = false;
             }
         );
 
+        //TODO getting this working once pm2 fixes it would be dope
        /* pm2.pullAndReload("asahi", function(err, out) {
             console.log(err)
             console.log(out)
@@ -152,15 +151,11 @@ var conf = pmx.initModule({
         });
 */
 
-        //idea - get process id by name, then send signal to the process id (restart)
 
 
-        value_to_inspect++;
     }, 3000);
 
 
-
-    //console.log(value_to_inspect);
 
     /**
      *                Simple Actions
@@ -169,18 +164,20 @@ var conf = pmx.initModule({
      *  Once created you can trigger this from Keymetrics
      *
      */
+    //TODO checkout other options for pmx actions - could add some cool integrations
     pmx.action('env', function (reply) {
         return reply({
             env: process.env
         });
     });
 
+
     /**
      *                 Scoped Actions
      *
      *     This are for long running remote function
      * This allow also to res.emit logs to see the progress
-     *
+     * TODO get rid of this - probably don't need scoped actions
      **/
     var spawn = require('child_process').spawn;
 
@@ -206,10 +203,10 @@ var conf = pmx.initModule({
     });
 
 
-    pm2.connect(function () {
+    /*pm2.connect(function () {
         console.log('auto-reload2 module connected to pm2');
 
-    })
+    })*/
 
 
 });
