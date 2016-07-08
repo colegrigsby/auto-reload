@@ -126,8 +126,8 @@ pmx.initModule({
                                 });
                             }
                             else {*/
-                                console.log(cst.PREFIX_MSG + 'Process successfully updated %s', process_name);
-                                console.log(cst.PREFIX_MSG + 'Current commit %s', meta.current_revision);
+                                console.log('Process successfully updated %s', process_name);
+                                console.log('Current commit %s', meta.current_revision);
                                 pm2.reload(conf.module_conf.proc_name);
                             //}
                         });
@@ -184,6 +184,7 @@ var execCommands = function(repo_path, command_list, cb) {
         exec('cd '+repo_path+';'+command,
             function(code, output) {
                 stdout += '\n' + output;
+                console.log(stdout);
                 if (code === 0)
                     callback();
                 else
