@@ -123,10 +123,9 @@ pmx.initModule({
                                 vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
                                     printError(err);
                                     return cb ? cb({msg:meta.output + err}) : exitCli(cst.ERROR_EXIT);
-                                });
+                                });TODO this could setup a rollback if something happens 
                             }
                             else {*/
-
                                 //pm2.restart(conf.module_conf.proc_name);
                             //}
                         });
