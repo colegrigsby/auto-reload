@@ -105,6 +105,8 @@ pmx.initModule({
                     if (meta.success) {
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
+                        console.log(child.exec("echo HELLO"));
+                        child.exec("echo helo plz")
                         chain = chain.then(function(){console.log("exec hopefully");return child.exec("npm install && cd assets && bower update && cd .. && echo HELLO")}); //TODO promise
                         chain = chain.then(function(){return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
                         updated++;

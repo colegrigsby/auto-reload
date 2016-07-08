@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dea18775-67c3-4f78-ba1a-1f911fac612c" name="Default" comment="child exec &#10;&#10;">
+    <list default="true" id="dea18775-67c3-4f78-ba1a-1f911fac612c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
@@ -27,8 +27,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="107" column="84" selection-start-line="107" selection-start-column="84" selection-end-line="107" selection-end-column="84" />
+            <state relative-caret-position="270">
+              <caret line="108" column="49" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -248,7 +248,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1467996643941</updated>
-      <workItem from="1467996645186" duration="5554000" />
+      <workItem from="1467996645186" duration="5675000" />
     </task>
     <task id="LOCAL-00001" summary="ugh&#10;">
       <created>1468001025304</created>
@@ -285,11 +285,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468010742126</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="child exec &#10;&#10;">
+      <created>1468010865953</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1468010865953</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5554000" />
+    <option name="totallyTimeSpent" value="5675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="23" width="1260" height="714" extended-state="0" />
@@ -338,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="107" column="84" selection-start-line="107" selection-start-column="84" selection-end-line="107" selection-end-column="84" />
+        <state relative-caret-position="270">
+          <caret line="108" column="49" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
           <folding />
         </state>
       </provider>
