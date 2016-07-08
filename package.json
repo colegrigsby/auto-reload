@@ -1,6 +1,7 @@
 {
-  "name": "auto-reload",
-  "version": "0.12.0",
+
+  "name": "auto-reload-pm2",
+  "version": "0.10.0",
   "description": "PM2 Module to pull and reload a specific single process defined in the package.json",
   "main": "app.js",
   "dependencies": {
