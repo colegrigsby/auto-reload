@@ -12,22 +12,22 @@
 7 silly cache add   rawSpec: '.',
 7 silly cache add   spec: '/opt/auto-reload2',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /home/cgrigsby/.npm/auto-reload/0.6.0/package.tgz not in flight; packing
+8 verbose addLocalDirectory /home/cgrigsby/.npm/auto-reload/0.7.0/package.tgz not in flight; packing
 9 verbose correctMkdir /home/cgrigsby/.npm correctMkdir not in flight; initializing
-10 info lifecycle auto-reload@0.6.0~prepublish: auto-reload@0.6.0
-11 silly lifecycle auto-reload@0.6.0~prepublish: no script for prepublish, continuing
-12 verbose tar pack [ '/home/cgrigsby/.npm/auto-reload/0.6.0/package.tgz',
+10 info lifecycle auto-reload@0.7.0~prepublish: auto-reload@0.7.0
+11 silly lifecycle auto-reload@0.7.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/cgrigsby/.npm/auto-reload/0.7.0/package.tgz',
 12 verbose tar pack   '/opt/auto-reload2' ]
-13 verbose tarball /home/cgrigsby/.npm/auto-reload/0.6.0/package.tgz
+13 verbose tarball /home/cgrigsby/.npm/auto-reload/0.7.0/package.tgz
 14 verbose folder /opt/auto-reload2
-15 verbose addLocalTarball adding from inside cache /home/cgrigsby/.npm/auto-reload/0.6.0/package.tgz
+15 verbose addLocalTarball adding from inside cache /home/cgrigsby/.npm/auto-reload/0.7.0/package.tgz
 16 verbose correctMkdir /home/cgrigsby/.npm correctMkdir not in flight; initializing
-17 silly cache afterAdd auto-reload@0.6.0
-18 verbose afterAdd /home/cgrigsby/.npm/auto-reload/0.6.0/package/package.json not in flight; writing
+17 silly cache afterAdd auto-reload@0.7.0
+18 verbose afterAdd /home/cgrigsby/.npm/auto-reload/0.7.0/package/package.json not in flight; writing
 19 verbose correctMkdir /home/cgrigsby/.npm correctMkdir not in flight; initializing
-20 verbose afterAdd /home/cgrigsby/.npm/auto-reload/0.6.0/package/package.json written
+20 verbose afterAdd /home/cgrigsby/.npm/auto-reload/0.7.0/package/package.json written
 21 silly publish { name: 'auto-reload',
-21 silly publish   version: '0.6.0',
+21 silly publish   version: '0.7.0',
 21 silly publish   description: 'PM2 Module to pull and reload a specific single process defined in the package.json',
 21 silly publish   main: 'app.js',
 21 silly publish   dependencies: { pmx: 'beta', vizion: '*', pm2: '*' },
@@ -41,13 +41,13 @@
 21 silly publish        script: 'app.js' } ],
 21 silly publish   author: { name: 'Cole Grigsby' },
 21 silly publish   license: 'MIT',
-21 silly publish   gitHead: '7d7a82e889a2749f2ba343aa23f80b07acbabe56',
+21 silly publish   gitHead: '0ed9274f9e736da4a3376bcc4bd08cdeac93c47d',
 21 silly publish   bugs: { url: 'https://github.com/colegrigsby/auto-reload/issues' },
 21 silly publish   readme: 'ERROR: No README data found!',
 21 silly publish   homepage: 'https://github.com/colegrigsby/auto-reload#readme',
-21 silly publish   _id: 'auto-reload@0.6.0',
+21 silly publish   _id: 'auto-reload@0.7.0',
 21 silly publish   scripts: {},
-21 silly publish   _shasum: 'f1ad9c8780eab8cc0e816b439c3b9cc29c1d6225',
+21 silly publish   _shasum: 'a3398101df9c64cdcba1f3ec151e108d83a68265',
 21 silly publish   _from: '.' }
 22 verbose getPublishConfig undefined
 23 silly mapToRegistry name auto-reload
@@ -62,25 +62,25 @@
 26 silly mapToRegistry   type: 'tag' }
 27 silly mapToRegistry uri https://registry.npmjs.org/auto-reload
 28 verbose publish registryBase https://registry.npmjs.org/
-29 silly publish uploading /home/cgrigsby/.npm/auto-reload/0.6.0/package.tgz
+29 silly publish uploading /home/cgrigsby/.npm/auto-reload/0.7.0/package.tgz
 30 verbose request uri https://registry.npmjs.org/auto-reload
 31 verbose request sending authorization for write operation
-32 info attempt registry request try #1 at 1:37:55 PM
+32 info attempt registry request try #1 at 1:50:44 PM
 33 verbose request using bearer token for auth
-34 verbose request id 01e41912fd10f793
+34 verbose request id 4209be95c1121850
 35 http request PUT https://registry.npmjs.org/auto-reload
 36 http 403 https://registry.npmjs.org/auto-reload
 37 verbose headers { 'content-type': 'application/json',
 37 verbose headers   'cache-control': 'max-age=300',
 37 verbose headers   'content-length': '105',
 37 verbose headers   'accept-ranges': 'bytes',
-37 verbose headers   date: 'Fri, 08 Jul 2016 17:37:55 GMT',
+37 verbose headers   date: 'Fri, 08 Jul 2016 17:50:44 GMT',
 37 verbose headers   via: '1.1 varnish',
 37 verbose headers   connection: 'keep-alive',
 37 verbose headers   'x-served-by': 'cache-sea1927-SEA',
 37 verbose headers   'x-cache': 'MISS',
 37 verbose headers   'x-cache-hits': '0',
-37 verbose headers   'x-timer': 'S1467999475.715666,VS0,VE191',
+37 verbose headers   'x-timer': 'S1468000244.290709,VS0,VE44',
 37 verbose headers   vary: 'Accept-Encoding' }
 38 verbose request invalidating /home/cgrigsby/.npm/registry.npmjs.org/auto-reload on PUT
 39 error publish Failed PUT 403
