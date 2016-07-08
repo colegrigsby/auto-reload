@@ -1,7 +1,7 @@
 var pmx = require('pmx');
 var pm2 = require('pm2');
 var vizion = require('vizion');
-var child = require('child_processes')
+var child = require('child_process')
 var Promise = require('bluebird')
 pmx.initModule({
 
