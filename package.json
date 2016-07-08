@@ -7,8 +7,9 @@
     "pmx": "beta",
     "vizion": "*",
     "pm2": "*",
-    "child_processes": "*",
-    "bluebird": "*"
+    "child_process": "*",
+    "bluebird": "*",
+    "async": "*"
   },
   "repository": {
     "type": "git",
