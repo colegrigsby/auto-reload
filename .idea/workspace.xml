@@ -27,8 +27,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="128" column="32" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="32" />
+            <state relative-caret-position="227">
+              <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
               <folding />
             </state>
           </provider>
@@ -248,7 +248,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1467996643941</updated>
-      <workItem from="1467996645186" duration="7856000" />
+      <workItem from="1467996645186" duration="8148000" />
     </task>
     <task id="LOCAL-00001" summary="ugh&#10;">
       <created>1468001025304</created>
@@ -362,11 +362,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468013784736</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="getting close">
+      <created>1468013868290</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1468013868290</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7856000" />
+    <option name="totallyTimeSpent" value="8148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="23" width="1260" height="714" extended-state="0" />
@@ -407,7 +414,8 @@
     <MESSAGE value="spelling" />
     <MESSAGE value="stupidity" />
     <MESSAGE value="exec fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="exec fix" />
+    <MESSAGE value="getting close" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting close" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -424,8 +432,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="128" column="32" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="32" />
+        <state relative-caret-position="227">
+          <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
           <folding />
         </state>
       </provider>
