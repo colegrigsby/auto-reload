@@ -83,6 +83,8 @@ pmx.initModule({
                 console.log("meta", meta);
                 console.log("err", err);
                 if (meta.success) {
+                    //TODO exec npm update and bower update??
+                    
                     pm2.reload(conf.module_conf.proc_name);
                     updated++;
 
