@@ -89,7 +89,7 @@ pmx.initModule({
     var updated = 0;
 
     /**
-     * .metric, .counter, .meter, .histogram are also available (cf doc) //TODO research these 
+     * .metric, .counter, .meter, .histogram are also available (cf doc) //TODO research these
      */
     var val = Probe.metric({
         name: 'App Updated Count',
@@ -115,7 +115,7 @@ pmx.initModule({
 
 
     setInterval(function () {
-
+        console.log(conf)
 
         //TODO decide between chain and running boolean. Running is how pm2-auto-pull is done but chaining might
         // be better coding
