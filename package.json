@@ -7,10 +7,10 @@
     "pmx" : "beta"
 
   },
-  /*"repository": {TODO
+  "repository": {
     "type": "git",
     "url": "https://github.com/keymetrics/pmx.git"
-  },*/
+  },
   "config" : {
     "folder_path" : "/opt/asahi",
     "proc_name" : "asahi"
