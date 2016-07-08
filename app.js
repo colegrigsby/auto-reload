@@ -55,55 +55,25 @@ pmx.initModule({
          * More: http://bit.ly/1O02aap
          */
         /*alert: {
-            mode: 'threshold',
-            value: 20,
-            msg: 'test-probe alert!',
-            action: function (val) {
-                // Besides the automatic alert sent via Keymetrics
-                // You can also configure your own logic to do something
-                console.log('Value has reached %d', val);
-            }
-        }*/
+         mode: 'threshold',
+         value: 20,
+         msg: 'test-probe alert!',
+         action: function (val) {
+         // Besides the automatic alert sent via Keymetrics
+         // You can also configure your own logic to do something
+         console.log('Value has reached %d', val);
+         }
+         }*/
     });
 
 
-    setInterval(function () {
-        //console.log(conf.module_conf)
-        var running = false;
-
-
-        if (running == true) return false;
-
-        running = true;
-
-        //TODO if multiple processes in the future, will need to have array for folders and processes in package.json 
-        vizion.update(
-            { folder: conf.module_conf.folder_path },
-            function (err, meta) {
-                console.log("meta", meta);
-                console.log("err", err);
-                if (meta.success) {
-                    //TODO exec npm update and bower update??
-                    
-                    pm2.reload(conf.module_conf.proc_name);
-                    updated++;
-
-                }
-                running = false;
-            }
-        );
-
-        // getting this working once pm2 fixes it would be dope
-       /* pm2.pullAndReload("asahi", function(err, out) {
-            console.log(err)
-            console.log(out)
-            running = false;
-        });
-*/
-
-
-
-    }, 3000);
+    // getting this working once pm2 fixes it would be dope
+    /* pm2.pullAndReload("asahi", function(err, out) {
+     console.log(err)
+     console.log(out)
+     running = false;
+     });
+     */
 
 
     pmx.action('env', function (reply) {
@@ -112,7 +82,36 @@ pmx.initModule({
         });
     });
 
+    pm2.connect(function () {
+        console.log("connected")
+        var running = false;
 
+        setInterval(function () {
+            //console.log(conf.module_conf)
+
+
+            if (running == true) return false;
+
+            running = true;
+
+            //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
+            vizion.update(
+                {folder: conf.module_conf.folder_path},
+                function (err, meta) {
+                    console.log("meta", meta);
+                    console.log("err", err);
+                    if (meta.success) {
+                        //TODO exec npm update and bower update??
+
+                        pm2.reload(conf.module_conf.proc_name);
+                        updated++;
+
+                    }
+                    running = false;
+                }
+            );
+        })
+    }, 3000);
 
 
 });
