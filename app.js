@@ -95,21 +95,26 @@ pmx.initModule({
             running = true;
 
             //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
-            vizion.update(
+            /*vizion.update(
                 {folder: conf.module_conf.folder_path},
                 function (err, meta) {
                     console.log("meta", meta);
                     console.log("err", err);
                     if (meta.success) {
-                        //TODO exec npm update and bower update??
+                        //TODO need to run post update commands on my own here! yippeeee
+                        //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
 
-                        pm2.reload(conf.module_conf.proc_name);
+                        pm2.reload(conf.module_conf.proc_name); //might not be calling post update commands hahaha yay
                         updated++;
 
                     }
                     running = false;
                 }
-            );
+            );*/
+            pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
+                console.log("meta", meta);
+                console.log("err", err);
+            });
         })
     }, 3000);
 
