@@ -126,8 +126,7 @@ pmx.initModule({
                                 });
                             }
                             else {*/
-                                console.log('Process successfully updated %s', process_name);
-                                console.log('Current commit %s', meta.current_revision);
+                                
                                 pm2.reload(conf.module_conf.proc_name);
                             //}
                         });
