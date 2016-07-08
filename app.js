@@ -106,13 +106,31 @@ pmx.initModule({
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         child.exec("echo hello everyone whats up")
-                        chain = chain.then(function(){console.log("exec hopefully");return exec_cmd("cd "+conf.module_conf.folder_path+";npm update;cd assets;bower update;echo HELLO",
+                        /*chain = chain.then(function(){console.log("exec hopefully");return exec_cmd("cd "+conf.module_conf.folder_path+";npm update;cd assets;bower update;echo HELLO",
                             function(code, output){
                                 console.log(code + "code");
                                 console.log(output);
                             })
-                        }); //TODO promise
-                        chain = chain.then(function(){console.log("reload");return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
+                        }); //TODO promise*/
+                        //chain = chain.then(function(){console.log("reload");return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
+                        execCommands(conf.module_conf.folder_path,
+                            ["npm update","cd assets;bower update","echo HELLO"],
+                            function(err, res) {
+                            /*if (err !== null)
+                            {
+                                vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
+                                    printError(err);
+                                    return cb ? cb({msg:meta.output + err}) : exitCli(cst.ERROR_EXIT);
+                                });
+                            }
+                            else {*/
+                                console.log(cst.PREFIX_MSG + 'Process successfully updated %s', process_name);
+                                console.log(cst.PREFIX_MSG + 'Current commit %s', meta.current_revision);
+                                pm2.reload(conf.module_conf.proc_name);
+                            //}
+                        });
+
+
                         updated++;
 
                     }
@@ -130,10 +148,11 @@ pmx.initModule({
 });
 
 
-var exec_cmd = function (cmd, callback) {
+
+var exec = function (cmd, callback) {
     var output = '';
 
-    var c = child.exec(cmd,
+    var c = child.exec(cmd, {env: process.env, maxBuffer: 3*1024*1024, timeout: EXEC_TIMEOUT},
         function(err) {
             if (callback)
                 callback(err ? err.code : 0, output);
@@ -147,3 +166,30 @@ var exec_cmd = function (cmd, callback) {
         output += data;
     });
 };
+
+/**
+ *
+ * @method execCommands
+ * @param {string} repo_path
+ * @param {object} command_list
+ * @return
+ */
+var execCommands = function(repo_path, command_list, cb) {
+    var stdout = '';
+
+    async.eachSeries(command_list, function(command, callback) {
+        stdout += '\n' + command;
+        exec('cd '+repo_path+';'+command,
+            function(code, output) {
+                stdout += '\n' + output;
+                if (code === 0)
+                    callback();
+                else
+                    callback('`'+command+'` failed');
+            });
+    }, function(err) {
+        if (err)
+            return cb(stdout + '\n' + err);
+        return cb(null, stdout);
+    });
+}
