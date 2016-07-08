@@ -1,7 +1,8 @@
 var pmx = require('pmx');
 var pm2 = require('pm2');
 var vizion = require('vizion');
-
+var child = require('child_processes')
+var Promise = require('bluebird')
 pmx.initModule({
 
     // Options related to the display style on Keymetrics
@@ -85,6 +86,7 @@ pmx.initModule({
     pm2.connect(function () {
         console.log("connected")
         var running = false;
+        var chain = Promise.resolve();
 
         setInterval(function () {
             //console.log(conf.module_conf)
@@ -95,7 +97,7 @@ pmx.initModule({
             running = true;
 
             //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
-            /*vizion.update(
+            vizion.update(
                 {folder: conf.module_conf.folder_path},
                 function (err, meta) {
                     console.log("meta", meta);
@@ -103,18 +105,18 @@ pmx.initModule({
                     if (meta.success) {
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
-
-                        pm2.reload(conf.module_conf.proc_name); //might not be calling post update commands hahaha yay
+                        chain = chain.then(function(){return child.exec("npm install && cd assets && bower update && cd ..")}); //TODO promise
+                        chain = chain.then(function(){return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
                         updated++;
 
                     }
                     running = false;
                 }
-            );*/
-            pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
+            );
+            /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
                 console.log("meta", meta);
                 console.log("err", err);
-            });
+            });*/
         })
     }, 3000);
 

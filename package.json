@@ -6,7 +6,9 @@
   "dependencies": {
     "pmx": "beta",
     "vizion": "*",
-    "pm2": "*"
+    "pm2": "*",
+    "child_processes": "*",
+    "bluebird": "*"
   },
   "repository": {
     "type": "git",
