@@ -115,7 +115,7 @@ pmx.initModule({
 
 
     setInterval(function () {
-        console.log(conf)
+        //console.log(conf)
 
         //TODO decide between chain and running boolean. Running is how pm2-auto-pull is done but chaining might
         // be better coding
@@ -128,14 +128,14 @@ pmx.initModule({
         running = true;
 
         vizion.update(
-            { folder: conf.folder_path }, //TODO TEST with /opt/asahi :(
+            { folder: conf.module_conf.folder_path }, //TODO TEST with /opt/asahi :(
             function (err, meta) {
                 console.log("meta", meta);
                 console.log("err", err);
 
                 if (meta.success) {
                     //child.exec("cd /opt/dev/source && pm2 reload process.json --only asahi")
-                    pm2.reload(conf.proc_name); //config in package.json rn but might wanna change it? base off folder?
+                    pm2.reload(conf.module_conf.proc_name); //config in package.json rn but might wanna change it? base off folder?
                     updated++;
 
                 }
