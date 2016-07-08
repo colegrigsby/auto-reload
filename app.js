@@ -106,7 +106,7 @@ pmx.initModule({
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         child.exec("echo hello everyone whats up")
-                        chain = chain.then(function(){console.log("exec hopefully");return exec("cd "+conf.module_conf.folder_path+";npm update;cd assets;bower update;echo HELLO",
+                        chain = chain.then(function(){console.log("exec hopefully");return exec_cmd("cd "+conf.module_conf.folder_path+";npm update;cd assets;bower update;echo HELLO",
                             function(code, output){
                                 console.log(code + "code");
                                 console.log(output);
