@@ -3,6 +3,8 @@ var pm2 = require('pm2');
 var vizion = require('vizion');
 var child = require('child_process')
 var Promise = require('bluebird')
+var async = require('async')
+
 pmx.initModule({
 
     // Options related to the display style on Keymetrics
