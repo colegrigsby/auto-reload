@@ -105,9 +105,7 @@ pmx.initModule({
                     if (meta.success) {
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
-                        console.log(child.exec("echo HELLO"));
-                        child.exec("echo helo plz")
-                        chain = chain.then(function(){console.log("exec hopefully");return child.exec("npm install && cd assets && bower update && cd .. && echo HELLO")}); //TODO promise
+                        chain = chain.then(function(){console.log("exec hopefully");return exec_cmd("cd"+conf.module_conf.folder_path+";npm install;cd assets;bower update;echo HELLO")}); //TODO promise
                         chain = chain.then(function(){return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
                         updated++;
 
@@ -124,3 +122,23 @@ pmx.initModule({
 
 
 });
+
+
+var exec_cmd = function (cmd, callback) {
+    var output = '';
+
+    var c = child.exec(cmd,
+        function(err) {
+            if (callback)
+                callback(err ? err.code : 0, output);
+        });
+
+    c.stdout.on('data', function(data) {
+        output += data;
+    });
+
+    c.stderr.on('data', function(data) {
+        output += data;
+    });
+    console.log(output);
+};
