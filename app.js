@@ -128,14 +128,13 @@ pmx.initModule({
         running = true;
 
         vizion.update(
-            { folder: conf.module_conf.folder_path }, //TODO TEST with /opt/asahi :(
+            { folder: '/opt/asahi' }, //TODO TEST with /opt/asahi :( conf.module_conf.folder_path
             function (err, meta) {
                 console.log("meta", meta);
                 console.log("err", err);
-
                 if (meta.success) {
                     //child.exec("cd /opt/dev/source && pm2 reload process.json --only asahi")
-                    pm2.reload(conf.module_conf.proc_name); //config in package.json rn but might wanna change it? base off folder?
+                    pm2.reload('asahi');//conf.module_conf.proc_name); //config in package.json rn but might wanna change it? base off folder?
                     updated++;
 
                 }
