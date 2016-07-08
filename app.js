@@ -154,7 +154,7 @@ pmx.initModule({
 var exec = function (cmd, callback) {
     var output = '';
 
-    var c = child.exec(cmd, {env: process.env, maxBuffer: 3*1024*1024, timeout: EXEC_TIMEOUT},
+    var c = child.exec(cmd, {},
         function(err) {
             if (callback)
                 callback(err ? err.code : 0, output);
