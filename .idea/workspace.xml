@@ -27,8 +27,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
+            <state relative-caret-position="287">
+              <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -248,7 +248,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1467996643941</updated>
-      <workItem from="1467996645186" duration="8148000" />
+      <workItem from="1467996645186" duration="8327000" />
     </task>
     <task id="LOCAL-00001" summary="ugh&#10;">
       <created>1468001025304</created>
@@ -369,11 +369,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468013868290</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="exec the reload since pm2 cant seem to do it">
+      <created>1468014174366</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1468014174366</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8148000" />
+    <option name="totallyTimeSpent" value="8327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="7" y="23" width="1260" height="714" extended-state="0" />
@@ -415,7 +422,8 @@
     <MESSAGE value="stupidity" />
     <MESSAGE value="exec fix" />
     <MESSAGE value="getting close" />
-    <option name="LAST_COMMIT_MESSAGE" value="getting close" />
+    <MESSAGE value="exec the reload since pm2 cant seem to do it" />
+    <option name="LAST_COMMIT_MESSAGE" value="exec the reload since pm2 cant seem to do it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -432,8 +440,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="118" column="105" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
+        <state relative-caret-position="287">
+          <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
           <folding />
         </state>
       </provider>

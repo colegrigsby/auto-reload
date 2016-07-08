@@ -116,7 +116,7 @@ pmx.initModule({
                         }); //TODO promise*/
                         //chain = chain.then(function(){console.log("reload");return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update","cd assets;bower update","echo HELLO", "pm2 reload process.json"],
+                            ["npm update","cd assets;bower update","echo HELLO"],
                             function(err, res) {
                             /*if (err !== null)
                             {
@@ -127,7 +127,7 @@ pmx.initModule({
                             }
                             else {*/
 
-                                //pm2.reload(conf.module_conf.proc_name);
+                                pm2.restart(conf.module_conf.proc_name);
                             //}
                         });
 
