@@ -1,15 +1,16 @@
 {
   "name": "auto-reload",
   "version": "0.5.0",
-  "description": "PM2 Module to pull and reload a specific process ",
+  "description": "PM2 Module to pull and reload a specific single process defined in the package.json",
   "main": "app.js",
   "dependencies": {
-    "pmx" : "beta"
-
+    "pmx" : "beta",
+    "vizion": "*",
+    "pm2": "*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/keymetrics/pmx.git"
+    "url": "https://github.com/colegrigsby/auto-reload.git"
   },
   "config" : {
     "folder_path" : "/opt/asahi",
