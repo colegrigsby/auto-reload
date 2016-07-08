@@ -128,7 +128,7 @@ pmx.initModule({
         running = true;
 
         vizion.update(
-            { folder: '/opt/asahi' }, //TODO TEST with /opt/asahi :( conf.module_conf.folder_path
+            { folder: '/opt/dev/source' }, //TODO TEST with /opt/asahi :( conf.module_conf.folder_path
             function (err, meta) {
                 console.log("meta", meta);
                 console.log("err", err);
