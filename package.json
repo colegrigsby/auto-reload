@@ -7,7 +7,6 @@
     "pmx": "beta",
     "vizion": "*",
     "pm2": "*",
-    "child_process": "*",
     "bluebird": "*",
     "async": "*"
   },
