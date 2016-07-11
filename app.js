@@ -121,13 +121,14 @@ pmx.initModule({
                             else {
                                 //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
                             }
-
+                            running = false;
                             updated++;
                         });
 
 
                     }
-                    running = false;
+                    else
+                        running = false;
                 }
             );
             /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
