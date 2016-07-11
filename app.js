@@ -2,7 +2,6 @@ var pmx = require('pmx');
 var pm2 = require('pm2');
 var vizion = require('vizion');
 var child = require('child_process')
-var Promise = require('bluebird')
 var async = require('async')
 
 pmx.initModule({
@@ -70,15 +69,6 @@ pmx.initModule({
     });
 
 
-    // getting this working once pm2 fixes it would be dope
-    /* pm2.pullAndReload("asahi", function(err, out) {
-     console.log(err)
-     console.log(out)
-     running = false;
-     });
-     */
-
-
     pmx.action('env', function (reply) {
         return reply({
             env: process.env
@@ -142,7 +132,6 @@ pmx.initModule({
 });
 
 
-
 var exec = function (cmd, callback) {
     var output = '';
 
@@ -161,13 +150,6 @@ var exec = function (cmd, callback) {
     });
 };
 
-/**
- *
- * @method execCommands
- * @param {string} repo_path
- * @param {object} command_list
- * @return
- */
 var execCommands = function(repo_path, command_list, cb) {
     var stdout = '';
 
