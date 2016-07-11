@@ -1,6 +1,6 @@
 {
   "name": "auto-reload-pm2",
-  "version": "0.8.0",
+  "version": "0.10.0",
   "description": "PM2 Module to pull and reload a specific single sails app defined in the package.json.",
   "main": "app.js",
   "dependencies": {
