@@ -105,27 +105,27 @@ pmx.initModule({
                     console.log("meta", meta);
                     console.log("err", err);
                     if (meta && meta.success) {
-                        //TODO need to run post update commands on my own here! yippeeee
+
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update","cd assets;bower update","echo HELLO", "pm2 reload process.json"],
+                            ["npm update","cd assets;bower update", "pm2 reload process.json"],
                             function(err, meta) {
                             if (err !== null)
                             {
-                                vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
+                                /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
                                     console.log(err);
                                     console.log(meta)
                                     return meta.output;
-                                });//TODO this could setup a rollback if something happens
+                                });//TODO this could setup a rollback if something happens*/
                             }
                             else {
-                                //pm2.reload(conf.module_conf.proc_name);
+                                //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
                             }
+
+                            updated++;
+                            running = false;
                         });
 
-
-                        updated++;
-                        running = false;
 
                     }
                 }
