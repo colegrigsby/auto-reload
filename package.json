@@ -1,13 +1,12 @@
 {
   "name": "auto-reload-pm2",
-  "version": "0.13.0",
-  "description": "PM2 Module to pull and reload a specific single process defined in the package.json",
+  "version": "0.8.0",
+  "description": "PM2 Module to pull and reload a specific single sails app defined in the package.json.",
   "main": "app.js",
   "dependencies": {
     "pmx": "beta",
     "vizion": "*",
     "pm2": "*",
-    "bluebird": "*",
     "async": "*"
   },
   "repository": {
