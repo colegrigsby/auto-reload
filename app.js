@@ -88,7 +88,7 @@ pmx.initModule({
     pm2.connect(function () {
         console.log("connected")
         var running = false;
-        var chain = Promise.resolve();
+        //var chain = Promise.resolve();
 
         setInterval(function () {
             //console.log(conf.module_conf)
@@ -104,30 +104,23 @@ pmx.initModule({
                 function (err, meta) {
                     console.log("meta", meta);
                     console.log("err", err);
-                    if (meta.success) {
+                    if (meta && meta.success) {
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
-                        child.exec("echo hello everyone whats up")
-                        /*chain = chain.then(function(){console.log("exec hopefully");return exec_cmd("cd "+conf.module_conf.folder_path+";npm update;cd assets;bower update;echo HELLO",
-                            function(code, output){
-                                console.log(code + "code");
-                                console.log(output);
-                            })
-                        }); //TODO promise*/
-                        //chain = chain.then(function(){console.log("reload");return pm2.reload(conf.module_conf.proc_name)}); //might not be calling post update commands hahaha yay
                         execCommands(conf.module_conf.folder_path,
                             ["npm update","cd assets;bower update","echo HELLO", "pm2 restart process.json"],
-                            function(err, res) {
-                            /*if (err !== null)
+                            function(err, meta) {
+                            if (err !== null)
                             {
                                 vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
-                                    printError(err);
-                                    return cb ? cb({msg:meta.output + err}) : exitCli(cst.ERROR_EXIT);
-                                });TODO this could setup a rollback if something happens 
+                                    console.log(err);
+                                    console.log(meta)
+                                    return meta.output;
+                                });//TODO this could setup a rollback if something happens
                             }
-                            else {*/
-                                //pm2.restart(conf.module_conf.proc_name);
-                            //}
+                            else {
+                                pm2.reload(conf.module_conf.proc_name);
+                            }
                         });
 
 
