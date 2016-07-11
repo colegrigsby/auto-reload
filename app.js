@@ -108,7 +108,7 @@ pmx.initModule({
                         //TODO need to run post update commands on my own here! yippeeee
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update","cd assets;bower update","echo HELLO", "pm2 restart process.json"],
+                            ["npm update","cd assets;bower update","echo HELLO", "pm2 reload process.json"],
                             function(err, meta) {
                             if (err !== null)
                             {
@@ -119,15 +119,15 @@ pmx.initModule({
                                 });//TODO this could setup a rollback if something happens
                             }
                             else {
-                                pm2.reload(conf.module_conf.proc_name);
+                                //pm2.reload(conf.module_conf.proc_name);
                             }
                         });
 
 
                         updated++;
+                        running = false;
 
                     }
-                    running = false;
                 }
             );
             /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
