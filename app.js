@@ -123,11 +123,11 @@ pmx.initModule({
                             }
 
                             updated++;
-                            running = false;
                         });
 
 
                     }
+                    running = false;
                 }
             );
             /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
