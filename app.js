@@ -98,7 +98,7 @@ pmx.initModule({
 
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update","cd assets;bower update"],//, "pm2 reload process.json"],
+                            ["npm update","cd assets;bower update", "pm2 reload process.json"],
                             function(err, meta) {
                             if (err !== null)
                             {
@@ -109,8 +109,7 @@ pmx.initModule({
                                 });//TODO this could setup a rollback if something happens*/
                             }
                             else {
-                                console.log("TESTING RELOAD")
-                                pm2.reload('asahi'); //when pm2 is fixed
+                                //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
                             }
                             running = false;
                             updated++;
