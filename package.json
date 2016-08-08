@@ -1,6 +1,6 @@
 {
   "name": "auto-reload-pm2",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "description": "PM2 Module to pull and reload a specific single sails app defined in the package.json.",
   "main": "app.js",
   "dependencies": {
@@ -16,7 +16,7 @@
   "config": {
     "folder_path": "/opt/asahi",
     "proc_name": "asahi",
-    "interval": 3600000
+    "interval": 5000
   },
   "apps": [
     {

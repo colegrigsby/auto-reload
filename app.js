@@ -75,7 +75,7 @@ pmx.initModule({
         });
     });
 
-    pm2.connect(function () {
+    pm2.connect(false, function () {
         console.log("connected")
         var running = false;
         //var chain = Promise.resolve();
@@ -87,7 +87,6 @@ pmx.initModule({
             if (running == true) return false;
 
             running = true;
-            console.log("RUNNING SET TO TRUE")
 
             //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
             vizion.update(
@@ -97,21 +96,20 @@ pmx.initModule({
                     console.log("err", err);
                     if (meta && meta.success) {
 
-                        //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update", "cd assets;bower update", "pm2 reload process.json"],
+                            ["npm update", "cd assets;bower update"],// "pm2 reload process.json"],
                             function (err, meta) {
                                 if (err !== null) {
-                                    /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
+                                    console.log(err);
+				    /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
                                      console.log(err);
                                      console.log(meta)
                                      return meta.output;
                                      });//TODO this could setup a rollback if something happens*/
                                 }
                                 else {
-                                    //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
+                                    pm2.reload(conf.module_conf.proc_name);
                                 }
-                                console.log("RUNNING SET TO FALSE ")
                                 running = false;
                                 updated++;
                             });
@@ -122,12 +120,9 @@ pmx.initModule({
                         running = false;
                 }
             );
-            /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
-             console.log("meta", meta);
-             console.log("err", err);
-             });*/
-        })
-    }, 1000 * 60 * 60); //TODO set to hourly and publish
+        }, 
+     conf.module_conf.interval);
+}) ;
 
 
 });
@@ -151,11 +146,11 @@ var exec = function (cmd, callback) {
     });
 };
 
-var execCommands = function (repo_path, command_list, cb) {
+var execCommands = function (repo_path, command_list, callback) {
     var stdout = '';
 
     async.eachSeries(command_list, function (command, callback) {
-        stdout += '\n' + command;
+	stdout += '\n' + command;
         exec('cd ' + repo_path + ';' + command,
             function (code, output) {
                 stdout += '\n' + output;
