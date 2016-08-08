@@ -87,6 +87,7 @@ pmx.initModule({
             if (running == true) return false;
 
             running = true;
+            console.log("RUNNING SET TO TRUE")
 
             //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
             vizion.update(
@@ -98,22 +99,22 @@ pmx.initModule({
 
                         //in the future, pullAndReload takes care of this but for whatever reason, that still doesn't work
                         execCommands(conf.module_conf.folder_path,
-                            ["npm update","cd assets;bower update", "pm2 reload process.json"],
-                            function(err, meta) {
-                            if (err !== null)
-                            {
-                                /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
-                                    console.log(err);
-                                    console.log(meta)
-                                    return meta.output;
-                                });//TODO this could setup a rollback if something happens*/
-                            }
-                            else {
-                                //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
-                            }
-                            running = false;
-                            updated++;
-                        });
+                            ["npm update", "cd assets;bower update", "pm2 reload process.json"],
+                            function (err, meta) {
+                                if (err !== null) {
+                                    /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
+                                     console.log(err);
+                                     console.log(meta)
+                                     return meta.output;
+                                     });//TODO this could setup a rollback if something happens*/
+                                }
+                                else {
+                                    //pm2.reload(conf.module_conf.proc_name); when pm2 is fixed
+                                }
+                                console.log("RUNNING SET TO FALSE ")
+                                running = false;
+                                updated++;
+                            });
 
 
                     }
@@ -122,11 +123,11 @@ pmx.initModule({
                 }
             );
             /*pm2.pullAndReload(conf.module_conf.proc_name, function(err, meta){
-                console.log("meta", meta);
-                console.log("err", err);
-            });*/
+             console.log("meta", meta);
+             console.log("err", err);
+             });*/
         })
-    }, 1000*60*60); //TODO set to hourly and publish
+    }, 1000 * 60 * 60); //TODO set to hourly and publish
 
 
 });
@@ -136,35 +137,35 @@ var exec = function (cmd, callback) {
     var output = '';
 
     var c = child.exec(cmd, {},
-        function(err) {
+        function (err) {
             if (callback)
                 callback(err ? err.code : 0, output);
         });
 
-    c.stdout.on('data', function(data) {
+    c.stdout.on('data', function (data) {
         output += data;
     });
 
-    c.stderr.on('data', function(data) {
+    c.stderr.on('data', function (data) {
         output += data;
     });
 };
 
-var execCommands = function(repo_path, command_list, cb) {
+var execCommands = function (repo_path, command_list, cb) {
     var stdout = '';
 
-    async.eachSeries(command_list, function(command, callback) {
+    async.eachSeries(command_list, function (command, callback) {
         stdout += '\n' + command;
-        exec('cd '+repo_path+';'+command,
-            function(code, output) {
+        exec('cd ' + repo_path + ';' + command,
+            function (code, output) {
                 stdout += '\n' + output;
                 console.log(stdout);
                 if (code === 0)
                     callback();
                 else
-                    callback('`'+command+'` failed');
+                    callback('`' + command + '` failed');
             });
-    }, function(err) {
+    }, function (err) {
         if (err)
             return cb(stdout + '\n' + err);
         return cb(null, stdout);
