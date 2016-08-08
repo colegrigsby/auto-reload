@@ -15,7 +15,8 @@
   },
   "config": {
     "folder_path": "/opt/asahi",
-    "proc_name": "asahi"
+    "proc_name": "asahi",
+    "interval": 3600000
   },
   "apps": [
     {
