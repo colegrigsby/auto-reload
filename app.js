@@ -167,7 +167,7 @@ var execCommands = function (repo_path, command_list, cb) {
             });
     }, function (err) {
         if (err)
-            return cb(stdout + '\n' + err);
-        return cb(null, stdout);
+            return callback(stdout + '\n' + err);
+        return callback(null, stdout);
     });
 }
