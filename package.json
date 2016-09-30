@@ -14,8 +14,7 @@
     "url": "https://github.com/colegrigsby/auto-reload.git"
   },
   "config": {
-    "folder_path": "/opt/asahi",
-    "proc_name": "asahi",
+    "processes": [{"name": "asahi", "folder_path": "/opt/asahi"}, {"name": "AJPGS", "folder_path": "/opt/AJ-Program-Guide"}],
     "interval": 5000
   },
   "apps": [

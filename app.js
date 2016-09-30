@@ -81,48 +81,56 @@ pmx.initModule({
         //var chain = Promise.resolve();
 
         setInterval(function () {
-            //console.log(conf.module_conf)
+                //console.log(conf.module_conf)
 
 
-            if (running == true) return false;
+                if (running == true) return false;
 
-            running = true;
+                running = true;
 
-            //TODO if multiple processes in the future, will need to have array for folders and processes in package.json
-            vizion.update(
-                {folder: conf.module_conf.folder_path},
-                function (err, meta) {
-                    console.log("meta", meta);
-                    console.log("err", err);
-                    if (meta && meta.success) {
-
-                        execCommands(conf.module_conf.folder_path,
-                            ["npm update", "cd assets;bower update"],// "pm2 reload process.json"],
+                aysnc.each(conf.module_conf.processes, function (proc, cb) {
+                        vizion.update(
+                            {folder: proc.folder_path},
                             function (err, meta) {
-                                if (err !== null) {
-                                    console.log(err);
-				    /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
-                                     console.log(err);
-                                     console.log(meta)
-                                     return meta.output;
-                                     });//TODO this could setup a rollback if something happens*/
-                                }
-                                else {
-                                    pm2.reload(conf.module_conf.proc_name);
-                                }
-                                running = false;
-                                updated++;
-                            });
+                                console.log("meta", meta);
+                                console.log("err", err);
+                                if (meta && meta.success) {
+
+                                    execCommands(proc.folder_path,
+                                        ["npm update", "cd assets;bower update"],// "pm2 reload process.json"],
+                                        function (err, meta) {
+                                            if (err !== null) {
+                                                console.log(err);
+                                                /*vizion.prev({folder: proc.pm2_env.versioning.repo_path}, function(err2, meta2) {
+                                                 console.log(err);
+                                                 console.log(meta)
+                                                 return meta.output;
+                                                 });//TODO this could setup a rollback if something happens*/
+                                            }
+                                            else {
+                                                pm2.reload(proc.name);
+                                            }
+                                            updated++;
+                                            cb()
+                                        });
 
 
-                    }
-                    else
-                        running = false;
-                }
-            );
-        }, 
-     conf.module_conf.interval);
-}) ;
+                                }
+                                else
+                                    cb()
+                            }
+                        );
+                    },
+                    function (err) {
+                        if (err)
+                            console.log(err)
+                        running = false; 
+                    })
+
+
+            },
+            conf.module_conf.interval);
+    });
 
 
 });
@@ -150,7 +158,7 @@ var execCommands = function (repo_path, command_list, callback) {
     var stdout = '';
 
     async.eachSeries(command_list, function (command, callback) {
-	stdout += '\n' + command;
+        stdout += '\n' + command;
         exec('cd ' + repo_path + ';' + command,
             function (code, output) {
                 stdout += '\n' + output;
