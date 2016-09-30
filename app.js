@@ -88,7 +88,7 @@ pmx.initModule({
 
                 running = true;
 
-                aysnc.each(conf.module_conf.processes, function (proc, cb) {
+                async.each(conf.module_conf.processes, function (proc, cb) {
                         vizion.update(
                             {folder: proc.folder_path},
                             function (err, meta) {
