@@ -1,6 +1,6 @@
 {
   "name": "auto-reload-pm2",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "PM2 Module to pull and reload a specific single sails app defined in the package.json.",
   "main": "app.js",
   "dependencies": {
@@ -14,7 +14,16 @@
     "url": "https://github.com/colegrigsby/auto-reload.git"
   },
   "config": {
-    "processes": [{"name": "asahi", "folder_path": "/opt/asahi"}, {"name": "AJPGS", "folder_path": "/opt/AJ-Program-Guide"}],
+    "processes": [
+      {
+        "name": "asahi",
+        "folder_path": "/opt/asahi"
+      },
+      {
+        "name": "AJPGS",
+        "folder_path": "/opt/AJ-Program-Guide"
+      }
+    ],
     "interval": 5000
   },
   "apps": [
