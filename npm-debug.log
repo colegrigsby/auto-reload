@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
-2 info using npm@3.9.3
-3 info using node@v4.4.7
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.9.6
+3 info using node@v4.4.5
 4 verbose publish [ '.' ]
 5 silly cache add args [ '.', null ]
 6 verbose cache add spec .
@@ -10,24 +10,24 @@
 7 silly cache add   scope: null,
 7 silly cache add   name: null,
 7 silly cache add   rawSpec: '.',
-7 silly cache add   spec: '/Users/cole/Development/sails/auto-reload2',
+7 silly cache add   spec: '/opt/auto-reload',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz not in flight; packing
-9 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-10 info lifecycle auto-reload-pm2@1.3.0~prepublish: auto-reload-pm2@1.3.0
-11 silly lifecycle auto-reload-pm2@1.3.0~prepublish: no script for prepublish, continuing
-12 verbose tar pack [ '/Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz',
-12 verbose tar pack   '/Users/cole/Development/sails/auto-reload2' ]
-13 verbose tarball /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
-14 verbose folder /Users/cole/Development/sails/auto-reload2
-15 verbose addLocalTarball adding from inside cache /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
-16 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-17 silly cache afterAdd auto-reload-pm2@1.3.0
-18 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.3.0/package/package.json not in flight; writing
-19 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-20 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.3.0/package/package.json written
+8 verbose addLocalDirectory /home/asahi/.npm/auto-reload-pm2/1.4.0/package.tgz not in flight; packing
+9 verbose correctMkdir /home/asahi/.npm correctMkdir not in flight; initializing
+10 info lifecycle auto-reload-pm2@1.4.0~prepublish: auto-reload-pm2@1.4.0
+11 silly lifecycle auto-reload-pm2@1.4.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/asahi/.npm/auto-reload-pm2/1.4.0/package.tgz',
+12 verbose tar pack   '/opt/auto-reload' ]
+13 verbose tarball /home/asahi/.npm/auto-reload-pm2/1.4.0/package.tgz
+14 verbose folder /opt/auto-reload
+15 verbose addLocalTarball adding from inside cache /home/asahi/.npm/auto-reload-pm2/1.4.0/package.tgz
+16 verbose correctMkdir /home/asahi/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd auto-reload-pm2@1.4.0
+18 verbose afterAdd /home/asahi/.npm/auto-reload-pm2/1.4.0/package/package.json not in flight; writing
+19 verbose correctMkdir /home/asahi/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/asahi/.npm/auto-reload-pm2/1.4.0/package/package.json written
 21 silly publish { name: 'auto-reload-pm2',
-21 silly publish   version: '1.3.0',
+21 silly publish   version: '1.4.0',
 21 silly publish   description: 'PM2 Module to pull and reload a specific single sails app defined in the package.json.',
 21 silly publish   main: 'app.js',
 21 silly publish   dependencies: { pmx: 'beta', vizion: '*', pm2: '2.0.4', async: '*' },
@@ -40,12 +40,12 @@
 21 silly publish   license: 'MIT',
 21 silly publish   readme: '# auto-reload\nPM2 module for reloading a specific sails process \n\nRuns npm update and bower update before reloading the process. \n\nTurn off watch in pm2 for this process to prevent double reloading \n\n\n## config \n\n- use the proc name and directory to ensure the right application is being watched \n\n\n## Make sure to set up processes git remotes as ssh and have ssh key configured for git account so auto pull is possible',
 21 silly publish   readmeFilename: 'README.md',
-21 silly publish   gitHead: '2ddecb71ec613bde554e67adadfae351eb2ee853',
+21 silly publish   gitHead: 'dee4a0d8eb547d78e6e99469b6246c4a70bc72c8',
 21 silly publish   bugs: { url: 'https://github.com/colegrigsby/auto-reload/issues' },
 21 silly publish   homepage: 'https://github.com/colegrigsby/auto-reload#readme',
-21 silly publish   _id: 'auto-reload-pm2@1.3.0',
+21 silly publish   _id: 'auto-reload-pm2@1.4.0',
 21 silly publish   scripts: {},
-21 silly publish   _shasum: '8ddfac9f775dfbfa85f358c7f43558129420795e',
+21 silly publish   _shasum: 'f0e8fec74f104f7da82e8eaa9df21299bf8af1e4',
 21 silly publish   _from: '.' }
 22 verbose getPublishConfig undefined
 23 silly mapToRegistry name auto-reload-pm2
@@ -60,48 +60,24 @@
 26 silly mapToRegistry   type: 'tag' }
 27 silly mapToRegistry uri https://registry.npmjs.org/auto-reload-pm2
 28 verbose publish registryBase https://registry.npmjs.org/
-29 silly publish uploading /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
-30 verbose request uri https://registry.npmjs.org/auto-reload-pm2
-31 verbose request sending authorization for write operation
-32 info attempt registry request try #1 at 11:52:57 AM
-33 verbose request using bearer token for auth
-34 verbose request id 669bcad351348d0c
-35 http request PUT https://registry.npmjs.org/auto-reload-pm2
-36 http 403 https://registry.npmjs.org/auto-reload-pm2
-37 verbose headers { 'content-type': 'application/json',
-37 verbose headers   'cache-control': 'max-age=300',
-37 verbose headers   'content-length': '109',
-37 verbose headers   'accept-ranges': 'bytes',
-37 verbose headers   date: 'Fri, 02 Dec 2016 19:52:58 GMT',
-37 verbose headers   via: '1.1 varnish',
-37 verbose headers   connection: 'keep-alive',
-37 verbose headers   'x-served-by': 'cache-lax8635-LAX',
-37 verbose headers   'x-cache': 'MISS',
-37 verbose headers   'x-cache-hits': '0',
-37 verbose headers   'x-timer': 'S1480708377.936654,VS0,VE188',
-37 verbose headers   vary: 'Accept-Encoding' }
-38 verbose request invalidating /Users/cole/.npm/registry.npmjs.org/auto-reload-pm2 on PUT
-39 error publish Failed PUT 403
-40 verbose stack Error: you do not have permission to publish "auto-reload-pm2". Are you logged in as the correct user? : auto-reload-pm2
-40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
-40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
-40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
-40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:200:22)
-40 verbose stack     at emitTwo (events.js:87:13)
-40 verbose stack     at Request.emit (events.js:172:7)
-40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1067:10)
-40 verbose stack     at emitOne (events.js:82:20)
-40 verbose stack     at Request.emit (events.js:169:7)
-40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:988:12)
-41 verbose statusCode 403
-42 verbose pkgid auto-reload-pm2
-43 verbose cwd /Users/cole/Development/sails/auto-reload2
-44 error Darwin 15.6.0
-45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
-46 error node v4.4.7
-47 error npm  v3.9.3
-48 error code E403
-49 error you do not have permission to publish "auto-reload-pm2". Are you logged in as the correct user? : auto-reload-pm2
-50 error If you need help, you may report this error at:
-50 error     <https://github.com/npm/npm/issues>
-51 verbose exit [ 1, true ]
+29 silly publish uploading /home/asahi/.npm/auto-reload-pm2/1.4.0/package.tgz
+30 verbose stack Error: auth required for publishing
+30 verbose stack     at CachingRegistryClient.publish (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+30 verbose stack     at /usr/lib/node_modules/npm/lib/publish.js:137:14
+30 verbose stack     at mapToRegistry (/usr/lib/node_modules/npm/lib/utils/map-to-registry.js:62:3)
+30 verbose stack     at publish_ (/usr/lib/node_modules/npm/lib/publish.js:106:3)
+30 verbose stack     at Array.<anonymous> (/usr/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+30 verbose stack     at LOOP (/usr/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+30 verbose stack     at LOOP (/usr/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+30 verbose stack     at chain (/usr/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+30 verbose stack     at /usr/lib/node_modules/npm/lib/publish.js:72:5
+30 verbose stack     at RES (/usr/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+31 verbose cwd /opt/auto-reload
+32 error Linux 3.13.0-85-generic
+33 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+34 error node v4.4.5
+35 error npm  v3.9.6
+36 error code ENEEDAUTH
+37 error need auth auth required for publishing
+38 error need auth You need to authorize this machine using `npm adduser`
+39 verbose exit [ 1, true ]
