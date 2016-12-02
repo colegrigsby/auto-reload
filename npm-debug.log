@@ -12,22 +12,22 @@
 7 silly cache add   rawSpec: '.',
 7 silly cache add   spec: '/Users/cole/Development/sails/auto-reload2',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /Users/cole/.npm/auto-reload-pm2/1.2.0/package.tgz not in flight; packing
+8 verbose addLocalDirectory /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz not in flight; packing
 9 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-10 info lifecycle auto-reload-pm2@1.2.0~prepublish: auto-reload-pm2@1.2.0
-11 silly lifecycle auto-reload-pm2@1.2.0~prepublish: no script for prepublish, continuing
-12 verbose tar pack [ '/Users/cole/.npm/auto-reload-pm2/1.2.0/package.tgz',
+10 info lifecycle auto-reload-pm2@1.3.0~prepublish: auto-reload-pm2@1.3.0
+11 silly lifecycle auto-reload-pm2@1.3.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz',
 12 verbose tar pack   '/Users/cole/Development/sails/auto-reload2' ]
-13 verbose tarball /Users/cole/.npm/auto-reload-pm2/1.2.0/package.tgz
+13 verbose tarball /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
 14 verbose folder /Users/cole/Development/sails/auto-reload2
-15 verbose addLocalTarball adding from inside cache /Users/cole/.npm/auto-reload-pm2/1.2.0/package.tgz
+15 verbose addLocalTarball adding from inside cache /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
 16 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-17 silly cache afterAdd auto-reload-pm2@1.2.0
-18 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.2.0/package/package.json not in flight; writing
+17 silly cache afterAdd auto-reload-pm2@1.3.0
+18 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.3.0/package/package.json not in flight; writing
 19 verbose correctMkdir /Users/cole/.npm correctMkdir not in flight; initializing
-20 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.2.0/package/package.json written
+20 verbose afterAdd /Users/cole/.npm/auto-reload-pm2/1.3.0/package/package.json written
 21 silly publish { name: 'auto-reload-pm2',
-21 silly publish   version: '1.2.0',
+21 silly publish   version: '1.3.0',
 21 silly publish   description: 'PM2 Module to pull and reload a specific single sails app defined in the package.json.',
 21 silly publish   main: 'app.js',
 21 silly publish   dependencies: { pmx: 'beta', vizion: '*', pm2: '2.0.4', async: '*' },
@@ -40,12 +40,12 @@
 21 silly publish   license: 'MIT',
 21 silly publish   readme: '# auto-reload\nPM2 module for reloading a specific sails process \n\nRuns npm update and bower update before reloading the process. \n\nTurn off watch in pm2 for this process to prevent double reloading \n\n\n## config \n\n- use the proc name and directory to ensure the right application is being watched \n\n\n## Make sure to set up processes git remotes as ssh and have ssh key configured for git account so auto pull is possible',
 21 silly publish   readmeFilename: 'README.md',
-21 silly publish   gitHead: '34f101a85307dbc2e7c02d3869f3957aa2df37be',
+21 silly publish   gitHead: '2ddecb71ec613bde554e67adadfae351eb2ee853',
 21 silly publish   bugs: { url: 'https://github.com/colegrigsby/auto-reload/issues' },
 21 silly publish   homepage: 'https://github.com/colegrigsby/auto-reload#readme',
-21 silly publish   _id: 'auto-reload-pm2@1.2.0',
+21 silly publish   _id: 'auto-reload-pm2@1.3.0',
 21 silly publish   scripts: {},
-21 silly publish   _shasum: '797002c14660a057f34da648f6dc97c99040f498',
+21 silly publish   _shasum: '8ddfac9f775dfbfa85f358c7f43558129420795e',
 21 silly publish   _from: '.' }
 22 verbose getPublishConfig undefined
 23 silly mapToRegistry name auto-reload-pm2
@@ -60,25 +60,25 @@
 26 silly mapToRegistry   type: 'tag' }
 27 silly mapToRegistry uri https://registry.npmjs.org/auto-reload-pm2
 28 verbose publish registryBase https://registry.npmjs.org/
-29 silly publish uploading /Users/cole/.npm/auto-reload-pm2/1.2.0/package.tgz
+29 silly publish uploading /Users/cole/.npm/auto-reload-pm2/1.3.0/package.tgz
 30 verbose request uri https://registry.npmjs.org/auto-reload-pm2
 31 verbose request sending authorization for write operation
-32 info attempt registry request try #1 at 2:12:11 PM
+32 info attempt registry request try #1 at 11:52:57 AM
 33 verbose request using bearer token for auth
-34 verbose request id 17dc6bd7b7932c75
+34 verbose request id 669bcad351348d0c
 35 http request PUT https://registry.npmjs.org/auto-reload-pm2
 36 http 403 https://registry.npmjs.org/auto-reload-pm2
 37 verbose headers { 'content-type': 'application/json',
 37 verbose headers   'cache-control': 'max-age=300',
 37 verbose headers   'content-length': '109',
 37 verbose headers   'accept-ranges': 'bytes',
-37 verbose headers   date: 'Wed, 30 Nov 2016 22:12:12 GMT',
+37 verbose headers   date: 'Fri, 02 Dec 2016 19:52:58 GMT',
 37 verbose headers   via: '1.1 varnish',
 37 verbose headers   connection: 'keep-alive',
-37 verbose headers   'x-served-by': 'cache-lax8626-LAX',
+37 verbose headers   'x-served-by': 'cache-lax8635-LAX',
 37 verbose headers   'x-cache': 'MISS',
 37 verbose headers   'x-cache-hits': '0',
-37 verbose headers   'x-timer': 'S1480543931.922475,VS0,VE159',
+37 verbose headers   'x-timer': 'S1480708377.936654,VS0,VE188',
 37 verbose headers   vary: 'Accept-Encoding' }
 38 verbose request invalidating /Users/cole/.npm/registry.npmjs.org/auto-reload-pm2 on PUT
 39 error publish Failed PUT 403
