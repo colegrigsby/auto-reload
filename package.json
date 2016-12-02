@@ -4,10 +4,10 @@
   "description": "PM2 Module to pull and reload a specific single sails app defined in the package.json.",
   "main": "app.js",
   "dependencies": {
-    "pmx": "beta",
-    "vizion": "*",
+    "async": "^2.1.4",
     "pm2": "2.0.4",
-    "async": "*"
+    "pmx": "beta",
+    "vizion": "*"
   },
   "repository": {
     "type": "git",
